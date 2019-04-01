@@ -9,7 +9,9 @@ renderer = new WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 let donuts = [];
-let ADD = 0.2;
+let ADD = 0.3;
+
+const VIBGYOR = [0x9400D3, 0x4B0082, 0x0000FF, 0x00FF00, 0xFFFF00, 0xFF7F00, 0xFF0000]
 
 const randomInRange = (from, to) => {
     let x = Math.random() * (to - from);
@@ -21,7 +23,7 @@ const createTorus = (geometryParams, materialParams) => new Mesh(
     new MeshBasicMaterial(materialParams));
 
 const createDonut = () => {
-    let donut = createTorus([1, 0.3, 5, 50], { color: Math.random() * 0xffffff });
+    let donut = createTorus([1, 0.3, 5, 50], { color: VIBGYOR[Math.round(randomInRange(0, 6))] });
     donut.position.x = randomInRange(-50, 50);
     donut.position.y = 50;
     donut.position.z = randomInRange(-50, 50);
